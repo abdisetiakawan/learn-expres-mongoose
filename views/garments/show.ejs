@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Garments</title>
+  </head>
+  <body>
+    <h1><%= garments.name %></h1>
+    <ul>
+      <li>Lokasi: <%= garments.location %></li>
+      <li>Contact: <%= garments.contact %></li>
+    </ul>
+    <h2>Garment Products:</h2>
+    <ul>
+      <% for( let garmentProducts of garments.products ) { %>
+      <li>
+        <a href="/products/<%= garmentProducts._id %>"><%=
+            garmentProducts.name %> - <%= garmentProducts.brand %>
+          </li></a>
+      <% } %>
+    </ul>
+    <a href="/garments">All Garments</a>
+    <a href="/garments/<%= garments._id %>/edit">Edit</a>
+    <form action="/garments/<%= garments._id %>?_method=DELETE" method="post">
+      <button type="submit">Delete</button>
+    </form>
+    <a href="/garments/<%= garments._id %>/product/create">Add Product</a>
+  </body>
+</html>
